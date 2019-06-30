@@ -36,10 +36,10 @@ def step(s, a):
         if player_sum > 21 or player_sum < 1:
             return -1, [player_sum, s[1]]
 
-        if dealer_sum <= 17:
-            dealer_sum += get_rand_card()
-            if dealer_sum > 21 or dealer_sum < 1:
-                return +1, [player_sum, s[1]]
+        # if dealer_sum <= 17:
+        #     dealer_sum += get_rand_card()
+        #     if dealer_sum > 21 or dealer_sum < 1:
+        #         return +1, [player_sum, s[1]]
 
         return 0, [player_sum, s[1]]
 

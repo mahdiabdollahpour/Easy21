@@ -47,7 +47,8 @@ class MonteCarloControl(Agent):
 
     def train(self):
         for i in range(self.episodes):
-            print("==============", i, "==============")
+            if i % 10000 == 0:
+                print("==============", i, "==============")
             episode = []
             s = game.init()
 
