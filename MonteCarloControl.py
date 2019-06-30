@@ -6,13 +6,12 @@ import game
 
 class MonteCarloControl(Agent):
 
-    def __init__(self, episodes, w, df, No):
+    def __init__(self, episodes, df, No):
+        super(MonteCarloControl, self).__init__()
         self.No = No
         self.df = df
         self.episodes = episodes
-        self.w = w
-        self.N = np.zeros(shape=(22, 11, 2))
-        self.Q = np.zeros(shape=(22, 11, 2))
+        # self.w = w
 
     def get_alpha(self, s, a):
         return 1.0 / (self.N[s[0]][s[1]][a])
@@ -26,7 +25,7 @@ class MonteCarloControl(Agent):
         if rnd > epsilon:
             return self.optimal_policy(vec)
         else:
-            return np.random.randint(0, 1)
+            return np.random.randint(0, 2)
 
     def optimal_policy(self, vec):
         return np.argmax(vec)
@@ -57,12 +56,13 @@ class MonteCarloControl(Agent):
 
             r = 0
             while r == 0:
-                a = self.policy(0.5, self.Q[ps, ds])
+                a = self.policy(self.get_e(s), self.Q[ps, ds])
                 # print(a)
                 r, s = game.step([ps, ds], a)
                 # print("r",r,a,ps,ds)
-                episode.append([[ps,ds], a, r])
+                episode.append([[ps, ds], a, r])
                 if a == 0:
+                    # print(r)
                     break
                 else:
                     ps = s[0]

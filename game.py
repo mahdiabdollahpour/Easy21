@@ -1,7 +1,9 @@
 cards = []
 cards += range(1, 11)
-# cards += range(-10, 0)
+cards += range(-10, 0)
 cards += range(1, 11)
+import numpy as np
+np.random.shuffle(cards)
 # cards += range(-10, 0)
 print(cards)
 import random
@@ -19,7 +21,9 @@ dealer_sum = 0
 def init():
     global dealer_sum
     dealer_sum = abs(get_rand_card())
-    return [abs(get_rand_card()), dealer_sum]
+    s = [abs(get_rand_card()), dealer_sum]
+    # print(s)
+    return s
 
 
 def step(s, a):

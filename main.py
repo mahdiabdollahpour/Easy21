@@ -1,8 +1,8 @@
-import RL
+import QL
 import plot
 from MonteCarloControl import MonteCarloControl
 
-# ss = RL.Q_learning(1800000, 0.6)
-mcc = MonteCarloControl(500000, 0.4, 1, 100)
-ss = mcc.train()
-plot.surface_plot(ss)
+
+mcc = MonteCarloControl(200000, df=1, No=100)
+mcc.train()
+plot.surface_plot(mcc.get_value_function())

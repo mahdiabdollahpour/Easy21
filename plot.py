@@ -13,12 +13,12 @@ def surface_plot(ss):
     sequence_containing_x_vals = []
     sequence_containing_y_vals = []
     sequence_containing_z_vals = []
-
-    for i in range(22):
-        for j in range(22):
+    m,n = np.shape(ss)
+    for i in range(m):
+        for j in range(n):
                 sequence_containing_x_vals.append(i)
                 sequence_containing_y_vals.append(j)
-                sequence_containing_z_vals.append(ss[i][j][1])
+                sequence_containing_z_vals.append(ss[i][j])
     x = sequence_containing_x_vals
     y = sequence_containing_y_vals
     z = sequence_containing_z_vals
@@ -58,12 +58,12 @@ def scatter_plot(ss):
     sequence_containing_x_vals = []
     sequence_containing_y_vals = []
     sequence_containing_z_vals = []
-
-    for i in range(22):
-        for j in range(22):
+    m,n = np.shape(ss)
+    for i in range(m):
+        for j in range(n):
                 sequence_containing_x_vals.append(i)
                 sequence_containing_y_vals.append(j)
-                sequence_containing_z_vals.append(ss[i][j][1])
+                sequence_containing_z_vals.append(ss[i][j])
 
     fig = pyplot.figure()
     ax = Axes3D(fig)
